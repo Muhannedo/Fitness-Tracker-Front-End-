@@ -61,4 +61,17 @@ async function update(id, workout) {
     console.log(error);
   }
 }
-export { index, create, show, update };
+
+//  Delete a workout
+async function deleteWorkout(id) {
+  try {
+    const res = await fetch(`${BASE_URL}/${id}`, {
+      method: "DELETE",
+      headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+    });
+    return res.json();
+  } catch (error) {
+    console.log(error);
+  }
+}
+export { index, create, show, update, deleteWorkout };
