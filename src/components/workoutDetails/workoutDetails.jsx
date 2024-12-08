@@ -23,8 +23,8 @@ const WorkoutDetails = () => {
       {workout ? (
         <div>
           <ul>
-            <li>{workout.workoutType}</li>
-            <li>{workout.duration}</li>
+            <li>{workout.workoutType} Workout</li>
+            <li>{workout.duration} Minute</li>
             <li>{workoutDate}</li>
           </ul>
         </div>
