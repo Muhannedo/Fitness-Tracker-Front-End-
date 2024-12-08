@@ -10,6 +10,7 @@ import Dashboard from "./components/Dashboard/Dashboard";
 import SignupForm from "./components/SignupForm/SignupForm";
 import SigninForm from "./components/SigninForm/SigninForm";
 import WorkoutList from "./components/workoutList/workoutList";
+import WorkoutDetails from "./components/workoutDetails/workoutDetails";
 
 const App = () => {
   const [user, setUser] = useState(authService.getUser());
@@ -39,6 +40,7 @@ const App = () => {
               path="/workouts"
               element={<WorkoutList workouts={workouts} />}
             />
+            <Route path="/workouts/:workoutId" element={<WorkoutDetails />} />
           </>
         ) : (
           // if user is not logged in, show the landing page

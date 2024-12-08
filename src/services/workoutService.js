@@ -34,9 +34,9 @@ const create = async (workout) => {
 };
 
 // show by id
-const show = async (id) => {
+const show = async (workoutId) => {
   try {
-    const res = await fetch(`${BASE_URL}/${id}`, {
+    const res = await fetch(`${BASE_URL}/${workoutId}`, {
       headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
     });
     return res.json();
