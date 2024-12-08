@@ -15,14 +15,18 @@ const WorkoutDetails = () => {
     fetchWorkout();
   }, [workoutId]);
 
+  const workoutDate = new Date(workout?.date).toDateString();
+
   return (
     <main>
       <h1>Workout Details</h1>
       {workout ? (
         <div>
-          <h2>{workout.workoutType}</h2>
-          <p>{workout.duration}</p>
-          <p>{workout.date}</p>
+          <ul>
+            <li>{workout.workoutType}</li>
+            <li>{workout.duration}</li>
+            <li>{workoutDate}</li>
+          </ul>
         </div>
       ) : (
         <p>Loading...</p>

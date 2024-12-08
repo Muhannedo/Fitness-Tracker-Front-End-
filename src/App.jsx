@@ -1,7 +1,7 @@
 // App.jsx
 
 import { useState, useEffect } from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useNavigate } from "react-router-dom";
 import NavBar from "./components/NavBar/NavBar";
 import Landing from "./components/Landing/Landing";
 import * as authService from "../src/services/authService"; // import the authservice
@@ -11,10 +11,18 @@ import SignupForm from "./components/SignupForm/SignupForm";
 import SigninForm from "./components/SigninForm/SigninForm";
 import WorkoutList from "./components/workoutList/workoutList";
 import WorkoutDetails from "./components/workoutDetails/workoutDetails";
+import WrokoutForm from "./components/workoutFrom/workoutFrom";
 
 const App = () => {
+  const navigate = useNavigate();
   const [user, setUser] = useState(authService.getUser());
   const [workouts, setWorkouts] = useState([]);
+
+  const handleAddWorkout = async (workoutData) => {
+    const newWorkout = await workoutService.create(workoutData);
+    setWorkouts([...workouts, newWorkout]);
+    navigate("/workouts");
+  };
 
   useEffect(() => {
     const fetchAllWorkouts = async () => {
@@ -41,6 +49,10 @@ const App = () => {
               element={<WorkoutList workouts={workouts} />}
             />
             <Route path="/workouts/:workoutId" element={<WorkoutDetails />} />
+            <Route
+              path="/workouts/new"
+              element={<WrokoutForm handleAddWorkout={handleAddWorkout} />}
+            />
           </>
         ) : (
           // if user is not logged in, show the landing page

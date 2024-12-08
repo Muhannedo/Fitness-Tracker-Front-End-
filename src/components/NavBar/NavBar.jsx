@@ -13,6 +13,9 @@ const NavBar = ({ user, handleSignout }) => {
               <Link to="/workouts">Workouts</Link>
             </li>
             <li>
+              <Link to="/workouts/new">New Workout</Link>
+            </li>
+            <li>
               <Link to="" onClick={handleSignout}>
                 Sign Out{" "}
               </Link>
