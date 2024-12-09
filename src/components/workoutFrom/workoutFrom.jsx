@@ -2,9 +2,9 @@ import { useState } from "react";
 
 const WrokoutForm = (props) => {
   const [formData, setFormData] = useState({
-    title: "",
-    text: "",
-    category: "News",
+    date: "",
+    workoutType: "",
+    duration: "",
   });
 
   const handleChange = (evt) => {
