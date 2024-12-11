@@ -59,10 +59,8 @@ const WorkoutDetails = () => {
           <ul>
             {workout.exercise.map((exercise) => (
               <li key={exercise._id}>
-                {/* <Link to={`/workouts/${workoutId}/exercises/${exercise._id}`}> */}
                 {exercise.name} - {exercise.reps} reps - {exercise.sets} sets -
                 {exercise.weight} KGs
-                {/* </Link> */}
                 <br />
                 <Link
                   to={`/workouts/${workoutId}/exercises/${exercise._id}/edit`}
