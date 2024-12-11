@@ -35,6 +35,7 @@ const ExerciseForm = (props) => {
       navigate(`/workouts/${workoutId}`);
     } else {
       await props.handleAddExercise(formData);
+      window.location.reload();
       setTrigger(!trigger);
     }
     setFormData({

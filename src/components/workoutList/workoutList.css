@@ -1,0 +1,31 @@
+/* Workout List Specific Styles */
+.workout-list-main {
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.workout-list-header {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 15px;
+  background-color: #f9f9f9;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s;
+  margin-bottom: 10px;
+}
+
+.workout-list-header:hover {
+  background-color: #e9ecef;
+}
+
+.workout-list-header ul {
+  list-style: none;
+  padding: 0;
+}
+
+.workout-list-header ul li {
+  font-size: 1.2rem;
+  color: #333;
+}
