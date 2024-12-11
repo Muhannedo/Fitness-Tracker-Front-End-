@@ -1,4 +1,6 @@
-# fitness-tracker
+# fitness-tracker-Deployment-URL
+
+<a href="https://fitness-tracker-front-end.vercel.app/"> WEBSITE</a>
 
 # Fitness-tracker-Back-End
 <a href="https://github.com/Muhannedo/Fitness-Tracker-Back-End"> Back-End-Repo </a>
@@ -11,11 +13,9 @@ the app keeps fitness routines organized and motivates users to reach their goal
 # User Stories: 
 1.	As a user, I want to create a new workout so that I can track my exercises for the day.
 2.	As a user, I want to view a list of my past workouts so that I can monitor my progress.
-3.	As a user, I want to edit a workout so that I can update my exercise details if they change.
-4.	As a user, I want to delete a workout so that I can remove old or incorrect entries.
-5.	As a user, I want to log my daily meals so I can track my calorie and macronutrient intake.
-6. as a user i want to be able to add new exercises  
-7. as a user i want to be able to add my previous exercises 
+3.	As a user, I want to see a workout so that I can update my exercise details if they change.
+4. as a user i want to be able to add new exercises  
+5. as a user i want to be able to add my previous exercises 
 
 # Technologies Used : 
 -	Node.js
@@ -26,21 +26,19 @@ the app keeps fitness routines organized and motivates users to reach their goal
 -	CSS for styling
 
 
-# ERD
-<img src="/Planning/Final ERD.png">
+# Landing Page
+<img src="/Planning/Landing.png">
 
-# Mock-Ups:
-- Home
-<img src="/Planning/Home.png">
+# Workout-List:
 
-- all workouts
-<img src="/Planning/all-Workout.png">
+<img src="/Planning/workoutList.png">
 
-- adding workout 
-<img src="/Planning/addWorkOut.png">
+# workout form
+<img src="/Planning/workout-Form.png">
 
-- adding exercise
-<img src="/Planning/add-Exercise.png">
+# Sign-in Page 
+<img src="/Planning/Signin-Page.png">
+
 
    
 # Pseudo-code
