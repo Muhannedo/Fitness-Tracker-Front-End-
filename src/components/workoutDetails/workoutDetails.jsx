@@ -2,7 +2,6 @@ import { useParams } from "react-router-dom";
 import * as workoutService from "../../services/workoutService";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import * as exerciseService from "../../services/exerciseService";
 import ExerciseForm from "../ExerciseForm/ExerciseFrom";
 
 const WorkoutDetails = () => {
@@ -22,13 +21,16 @@ const WorkoutDetails = () => {
 
   // Exercises
 
-  const handleAddExercise = async (ExerciseFormData) => {
-    const newExercise = await exerciseService.create(ExerciseFormData);
+  const handleAddExercise = async (exerciseFormData) => {
+    const newExercise = await workoutService.createExercise(
+      workoutId,
+      exerciseFormData
+    );
     setWorkout({ ...workout, exercise: [...workout.exercise, newExercise] });
   };
 
   const handleDeleteExercise = async (exerciseId) => {
-    await exerciseService.deleteExercise(workoutId, exerciseId);
+    await workoutService.deleteExercise(workoutId, exerciseId);
     setWorkout({
       ...workout,
       exercise: workout.exercise.filter(
@@ -36,6 +38,7 @@ const WorkoutDetails = () => {
       ),
     });
   };
+
   return (
     <main>
       <h1>Workout Details</h1>
@@ -51,13 +54,20 @@ const WorkoutDetails = () => {
         <p>Loading...</p>
       )}
       <section>
-        <h2>Add Your exercise:</h2>
+        <h2>Add Your Exercise:</h2>
         {workout ? (
           <ul>
             {workout.exercise.map((exercise) => (
               <li key={exercise._id}>
-                <Link to={`/workouts/${workoutId}/exercises/${exercise._id}`}>
-                  {exercise.name}
+                {/* <Link to={`/workouts/${workoutId}/exercises/${exercise._id}`}> */}
+                {exercise.name} - {exercise.reps} reps - {exercise.sets} sets -
+                {exercise.weight} KGs
+                {/* </Link> */}
+                <br />
+                <Link
+                  to={`/workouts/${workoutId}/exercises/${exercise._id}/edit`}
+                >
+                  Edit
                 </Link>
                 <button onClick={() => handleDeleteExercise(exercise._id)}>
                   Delete

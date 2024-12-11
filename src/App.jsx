@@ -12,17 +12,12 @@ import SigninForm from "./components/SigninForm/SigninForm";
 import WorkoutList from "./components/workoutList/workoutList";
 import WorkoutDetails from "./components/workoutDetails/workoutDetails";
 import WrokoutForm from "./components/workoutFrom/workoutFrom";
+import ExerciseForm from "./components/ExerciseForm/ExerciseFrom";
 
 const App = () => {
   const navigate = useNavigate();
   const [user, setUser] = useState(authService.getUser());
   const [workouts, setWorkouts] = useState([]);
-
-  const handleAddWorkout = async (workoutData) => {
-    const newWorkout = await workoutService.create(workoutData);
-    setWorkouts([...workouts, newWorkout]);
-    navigate("/workouts");
-  };
 
   useEffect(() => {
     const fetchAllWorkouts = async () => {
@@ -35,6 +30,33 @@ const App = () => {
   const handleSignout = () => {
     authService.signout();
     setUser(null);
+  };
+
+  const handleAddWorkout = async (workoutFormData) => {
+    const newWorkout = await workoutService.create(workoutFormData);
+    setWorkouts([newWorkout, ...workouts]);
+    navigate("/workouts");
+  };
+
+  const handleDeleteWorkout = async (workoutId) => {
+    const deletedWorkout = await workoutService.destroy(workoutId);
+    setWorkouts(woorkout.filter((workout) => workout._id !== workoutId));
+    navigate("/workouts");
+  };
+
+  const handleUpdateWorkout = async (workoutId, workoutFormData) => {
+    const updatedWorkout = await workoutService.update(
+      workoutId,
+      workoutFormData
+    );
+
+    setWorkouts(
+      workouts.map((workout) =>
+        workoutId === workout._id ? updatedWorkout : workout
+      )
+    );
+
+    navigate(`/workouts/${workoutId}`);
   };
   return (
     <>
@@ -53,10 +75,30 @@ const App = () => {
               path="/workouts/new"
               element={<WrokoutForm handleAddWorkout={handleAddWorkout} />}
             />
+            <Route
+              path="/workouts/:workoutId/edit"
+              element={
+                <WrokoutForm handleUpdateWorkout={handleUpdateWorkout} />
+              }
+            />
+
+            <Route
+              path="/workouts/:workoutid"
+              element={
+                <WorkoutDetails handleDeleteWorkout={handleDeleteWorkout} />
+              }
+            />
+
+            <Route
+              path="/workouts/:workoutId/exercises/:exerciseId/edit"
+              element={
+                <ExerciseForm handleUpdateWorkout={handleUpdateWorkout} />
+              }
+            />
           </>
         ) : (
           // if user is not logged in, show the landing page
-          <Route path="/" element={<Landing user={user} />} />
+          <Route path="/" element={<Landing />} />
         )}
         <Route path="/signup" element={<SignupForm setUser={setUser} />} />
         <Route path="/signin" element={<SigninForm setUser={setUser} />} />

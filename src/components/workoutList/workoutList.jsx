@@ -5,15 +5,18 @@ const WorkoutList = (props) => {
     <>
       <main>
         <h1>Workout List</h1>
+
         {props.workouts.map((workout) => (
           <Link key={workout._id} to={`/workouts/${workout._id}`}>
-            <article>
-              <header>
-                <h2>
-                  {workout.workoutType} {workout.duration} Min
-                </h2>
-              </header>
-            </article>
+            <header className="workout-header">
+              <div>
+                <ul>
+                  <li>
+                    {workout.workoutType} - {workout.duration} Min
+                  </li>
+                </ul>
+              </div>
+            </header>
           </Link>
         ))}
       </main>

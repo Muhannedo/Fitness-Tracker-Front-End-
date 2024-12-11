@@ -1,6 +1,8 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import * as workoutService from "../../services/workoutService";
 
-const WrokoutForm = (props) => {
+const WorkoutForm = (props) => {
   const [formData, setFormData] = useState({
     date: "",
     workoutType: "",
@@ -13,37 +15,62 @@ const WrokoutForm = (props) => {
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    props.handleAddWorkout(formData);
+    if (workoutId) {
+      props.handleUpdateWorkout(workoutId, formData);
+    } else {
+      props.handleAddWorkout(formData);
+    }
   };
+
+  const { workoutId } = useParams();
+
+  useEffect(() => {
+    const fetchWorkout = async () => {
+      const workoutData = await workoutService.show(workoutId);
+      setFormData(workoutData);
+    };
+    if (workoutId) fetchWorkout();
+  }, [workoutId]);
+
   return (
-    <form onSubmit={handleSubmit}>
-      <label htmlFor="date-input">Date</label>
-      <input
-        type="date"
-        id="date-input"
-        name="date"
-        value={formData.date}
-        onChange={handleChange}
-      />
-      <lablel htmlFor="workoutType-input">Workout Type</lablel>
-      <input
-        type="text"
-        id="workoutType-input"
-        name="workoutType"
-        value={formData.workoutType}
-        onChange={handleChange}
-      />
-      <label htmlFor="duration-input">Duration</label>
-      <input
-        type="number"
-        id="duration-input"
-        name="duration"
-        value={formData.duration}
-        onChange={handleChange}
-      />
-      <button type="submit">Submit</button>
-    </form>
+    <main className="WorkoutForm">
+      <form onSubmit={handleSubmit}>
+        <h1>{workoutId ? "Edit Workout" : "New Workout"}</h1>
+
+        <label htmlFor="date">Date:</label>
+        <input
+          required
+          type="date"
+          name="date"
+          id="date"
+          value={formData.date}
+          onChange={handleChange}
+        />
+
+        <label htmlFor="workoutType">Workout Type:</label>
+        <input
+          required
+          type="text"
+          name="workoutType"
+          id="workoutType"
+          value={formData.workoutType}
+          onChange={handleChange}
+        />
+
+        <label htmlFor="duration">Duration (minutes):</label>
+        <input
+          required
+          type="number"
+          name="duration"
+          id="duration"
+          value={formData.duration}
+          onChange={handleChange}
+        />
+
+        <button type="submit">Submit</button>
+      </form>
+    </main>
   );
 };
 
-export default WrokoutForm;
+export default WorkoutForm;

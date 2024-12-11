@@ -2,9 +2,8 @@ const BASE_URL = `${import.meta.env.VITE_EXPRESS_BACKEND_URL}/workouts`;
 
 // ========= Protected Routes =========
 
-//router.use(verifyToken);
-
-//  All recipes
+// ---------- Workout management -------------
+//  All workouts
 const index = async () => {
   try {
     const res = await fetch(BASE_URL, {
@@ -74,4 +73,69 @@ async function deleteWorkout(id) {
     console.log(error);
   }
 }
-export { index, create, show, update, deleteWorkout };
+
+// ------- Exercise Management --------
+
+//  Create an exercise
+const createExercise = async (workoutId, exercise) => {
+  try {
+    const res = await fetch(`${BASE_URL}/${workoutId}/exercises`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+      body: JSON.stringify(exercise),
+    });
+    return res.json();
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+// delete Exercise
+const deleteExercise = async (workoutId, exerciseId) => {
+  try {
+    const res = await fetch(
+      `${BASE_URL}/${workoutId}/exercises/${exerciseId}`,
+      {
+        method: "DELETE",
+        headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+      }
+    );
+    return res.json();
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+// Update Exercise
+const updateExercise = async (workoutId, exerciseId, exerciseFormData) => {
+  try {
+    const res = await fetch(
+      `${BASE_URL}/${workoutId}/exercises/${exerciseId}`,
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+        body: JSON.stringify(exerciseFormData),
+      }
+    );
+    return res.json();
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export {
+  index,
+  create,
+  show,
+  update,
+  deleteWorkout,
+  createExercise,
+  deleteExercise,
+  updateExercise,
+};
