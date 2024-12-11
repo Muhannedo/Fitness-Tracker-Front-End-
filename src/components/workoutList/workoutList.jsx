@@ -6,23 +6,23 @@ const WorkoutList = (props) => {
       <main>
         <h1>Workout List</h1>
 
-        {props.workouts.map((workout) => (
-          <Link
-            key={workout._id}
-            to={`/workouts/${workout._id}`}
-            className="workout-link"
-          >
-            <header className="workout-item-header">
-              <div>
-                <ul className="workout-item-list">
+        <header className="workout-item-header">
+          <div>
+            <ul className="workout-item-list">
+              {props.workouts.map((workout) => (
+                <Link
+                  key={workout._id}
+                  to={`/workouts/${workout._id}`}
+                  className="workout-link"
+                >
                   <li className="workout-item">
                     {workout.workoutType} - {workout.duration} Min
                   </li>
-                </ul>
-              </div>
-            </header>
-          </Link>
-        ))}
+                </Link>
+              ))}
+            </ul>
+          </div>
+        </header>
       </main>
     </>
   );

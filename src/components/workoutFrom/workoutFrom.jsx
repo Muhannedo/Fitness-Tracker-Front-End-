@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import * as workoutService from "../../services/workoutService";
+import "./workoutFrom.css";
 
 const WorkoutForm = (props) => {
   const [formData, setFormData] = useState({

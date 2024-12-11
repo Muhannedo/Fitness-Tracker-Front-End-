@@ -1,0 +1,55 @@
+/* General styling for the navigation bar */
+nav {
+  background: linear-gradient(to right, #6ab04c, #2980b9);
+  padding: 0.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+/* Style the unordered list */
+nav ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  justify-content: center; /* Center the navigation items */
+}
+
+/* Style the list items */
+nav ul li {
+  margin: 0 0.5rem;
+}
+
+/* Style the links */
+nav ul li a {
+  text-decoration: none;
+  color: rgb(198, 32, 32);
+  font-weight: 500;
+  font-size: 0.875rem;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Add hover effect to links */
+nav ul li a:hover {
+  color: #ffffff;
+  background-color: rgba(143, 109, 109, 0.2);
+}
+
+/* Responsive design */
+@media (max-width: 68px) {
+  nav ul {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  nav ul li {
+    margin: 0.25rem 0;
+  }
+
+  nav ul li a {
+    font-size: 0.75rem;
+    padding: 0.4rem 0.8rem;
+  }
+}

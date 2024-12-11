@@ -37,32 +37,19 @@ main ul li {
 
 /* Exercise List */
 ul {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 15px;
-  justify-content: center;
 }
 
 ul li {
   background-color: #f4f4f9;
-  padding: 20px;
+  padding: 15px;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   font-size: 1rem;
   color: #333;
   position: relative;
-  text-align: center;
-  width: 150px;
-  height: 150px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: transform 0.3s, background-color 0.3s;
-}
-
-ul li:hover {
-  transform: scale(1.05);
-  background-color: #e9ecef;
 }
 
 /* Links and Buttons */
@@ -108,47 +95,6 @@ section h2 {
   color: #fff;
 }
 
-/* Workout List Specific Styles */
-.workout-list-main {
-  padding: 20px;
-  background-color: #ffffff;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.workout-list-header {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center;
-}
-
-.workout-list-header ul {
-  list-style: none;
-  padding: 0;
-}
-
-.workout-list-header ul li {
-  font-size: 1.2rem;
-  color: #333;
-  background-color: #f4f4f9;
-  padding: 20px;
-  border-radius: 8px;
-  width: 150px;
-  height: 150px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  text-align: center;
-  transition: transform 0.3s, background-color 0.3s;
-}
-
-.workout-list-header ul li:hover {
-  transform: scale(1.1);
-  background-color: #e9ecef;
-}
-
 /* Responsive Design */
 @media (max-width: 600px) {
   main {
@@ -161,13 +107,5 @@ section h2 {
 
   ul li {
     font-size: 0.9rem;
-    width: 120px;
-    height: 120px;
   }
-}
-.workout-item-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 15px;
-  justify-content: center;
 }

@@ -3,6 +3,7 @@ import * as workoutService from "../../services/workoutService";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import ExerciseForm from "../ExerciseForm/ExerciseFrom";
+import "./workoutDetails.css";
 
 const WorkoutDetails = () => {
   const [workout, setWorkout] = useState(null);
