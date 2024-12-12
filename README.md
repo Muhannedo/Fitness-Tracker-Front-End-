@@ -15,7 +15,6 @@ the app keeps fitness routines organized and motivates users to reach their goal
 2.	As a user, I want to view a list of my past workouts so that I can monitor my progress.
 3.	As a user, I want to see a workout so that I can update my exercise details if they change.
 4. as a user i want to be able to add new exercises  
-5. as a user i want to be able to add my previous exercises 
 
 # Technologies Used : 
 -	Node.js
