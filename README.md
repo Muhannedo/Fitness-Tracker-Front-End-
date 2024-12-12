@@ -38,7 +38,11 @@ the app keeps fitness routines organized and motivates users to reach their goal
 # Sign-in Page 
 <img src="/Planning/Signin-Page.png">
 
+# Future Work :
 
+- implement Chart.js to display the duration of the workout
+- make the Css Better
+- make a web-page that works on the phones
    
 # Pseudo-code
 ```
@@ -139,4 +143,6 @@ ELSE (user is a guest):
     Display general information about the workout tracker
     Prompt guest to "Sign In" or "Sign Up" to access features
 ```
+
+
 
