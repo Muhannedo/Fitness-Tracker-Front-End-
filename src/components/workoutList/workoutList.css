@@ -172,5 +172,5 @@ section h2 {
   background: #faf9f6;
 }
 .workout-item-header {
-  background-color: #7f2b0a;
+  background: linear-gradient(to bottom right, #6ab04c, #2980b9);
 }
